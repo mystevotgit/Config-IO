@@ -8,21 +8,21 @@ public class Main {
             //  Access the production environment.
             fileName = "src/config/config.txt";
             config = new ConfigParser(fileName);
-            executeProgram(config);
+            getConfiguration(config);
 
         } else if (args[0].equals("staging")){
 
             //  Access the staging environment.
             fileName = "src/config/config-staging.txt";
             config = new ConfigParser(fileName);
-            executeProgram(config);
+            getConfiguration(config);
 
         } else if (args[0].equals("development")){
 
             //  Access the development environment.
             fileName = "src/config/config-dev.txt";
             config = new ConfigParser(fileName);
-            executeProgram(config);
+            getConfiguration(config);
 
         } else {
             System.out.println("The environment you specified does not exist or is not available for configuration." +
@@ -33,20 +33,22 @@ public class Main {
 
 
     /**
-     * This method prints the values of all the getters of config.
+     * This method prints the values of all the keys of the specified configuration environment.
      * Different values will be printed depending on the environment specified.
-     * This method can be edited to handle other things.
+     * This method can be edited to do other things.
      * @param config
      */
-    public static void executeProgram(ConfigParser config) {
-        System.out.println(config.getName());
-        System.out.println(config.getDbname());
-        System.out.println(config.getContextUrl());
-        System.out.println(config.getHost());
-        System.out.println(config.getMode());
-        System.out.println(config.getPipeline());
-        System.out.println(config.getPort());
-        System.out.println(config.getTheme());
+    public static void getConfiguration(ConfigParser config) {
+
+        System.out.println(config.get("dbname"));
+        System.out.println(config.get("host"));
+        System.out.println(config.get("application.name"));
+        System.out.println(config.get("application.port"));
+        System.out.println(config.get("application.context-url"));
+        System.out.println(config.get("mode"));
+        System.out.println(config.get("theme"));
+        System.out.println(config.get("pipeline"));
+
     }
 
 }

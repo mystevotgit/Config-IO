@@ -4,14 +4,7 @@ import java.util.Scanner;
 import java.util.*;
 
 public class ConfigParser {
-    private String name;
-    private String dbname;
-    private String mode;
-    private String pipeline;
-    private String port;
-    private String host;
-    private String theme;
-    private String contextUrl;
+    private Map<String, String> map;
 
     /**
      * This is the ConfigParser constructor.
@@ -21,70 +14,47 @@ public class ConfigParser {
 
     public ConfigParser(String filePath) {
         try {
+            //  Create a file reader.
             File environment = new File(filePath);
             Scanner fileReader = new Scanner(environment);
-            Map<String, String> map = new HashMap<>();      //  Create new map
+            map = new HashMap<>();         //  Create new map
 
+            String prefix = "";                             // initialize a prefix that will track application.
             while (fileReader.hasNextLine()) {
                 String data = fileReader.nextLine();        //  Read each line.
 
-                if (data.contains("=")) {
+                if (data.isBlank()) {                       // set prefix to empty if a blank line is encountered.
+                    prefix = "";
+                }
+
+                if (data.length() > 0 && data.charAt(0) == '[') {       // set prefix to the heading i.e application.
+                    prefix = data.substring(1, data.length()-1) + ".";
+                }
+
+                if (data.contains("=")) {                               // split data into key and value and join prefix where necessary.
                     String[] splittedData = data.split("=");
-                    String key = splittedData[0];
+                    String key = prefix.concat(splittedData[0]);
                     String value = splittedData[1];
                     if (!map.containsKey(key)) {
-                        map.put(key, value);                //  Store key, value pair in the map.
+                        map.put(key, value);                //  Store key, value pairs in the map.
                     }
                 }
 
             }
-            fileReader.close();     // Close the file.
-
-            //  Assign value to class fields
-            this.name = map.get("name");
-            this.dbname = map.get("dbname");
-            this.mode = map.get("mode");
-            this.pipeline = map.get("pipeline");
-            this.port = map.get("port");
-            this.host = map.get("host");
-            this.theme = map.get("theme");
-            this.contextUrl = map.get("context-url");
+            fileReader.close();                     // Close the file.
 
         } catch (FileNotFoundException e) {         //  Handle exception
             e.printStackTrace();
         }
     }
 
-    //  Getters
-    public String getName() {
-        return name;
-    }
 
-    public String getDbname() {
-        return dbname;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public String getPipeline() {
-        return pipeline;
-    }
-
-    public String getPort() {
-        return port;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public String getTheme() {
-        return theme;
-    }
-
-    public String getContextUrl() {
-        return contextUrl;
+    /**
+     * This get method can be used to get any key in a config file.
+     * @param key
+     * @return: the value of the specified key will be returned.
+     */
+    public String get(String key) {
+        return map.get(key);
     }
 }
