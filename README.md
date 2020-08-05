@@ -30,7 +30,7 @@ A commonly used one is _**FileInputStream**_ and _**FileOutputStream**_.
 
 _**Java Scanner class**_ and _**File class**_ can be combined to read or write to a file too.
 
-## Implementation
+### Implementation
 
 In this Task, I read and manipulated strings from environment configuration files into a map using Java Scanner class and File class.
 I did the following:
@@ -68,3 +68,7 @@ I did the following:
     `catch (FileNotFoundException e) {`  
             `e.printStackTrace();`  
         `}`
+
+## Java Files and NIO
+
+To be updated later...
