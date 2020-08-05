@@ -32,22 +32,22 @@ _**Java Scanner class**_ and _**File class**_ can be combined to read or write t
 
 ## Implementation
 
-In this Task, I read and manipulated strings from enviroment configuration files into a map using Java Scanner class and File class.
+In this Task, I read and manipulated strings from environment configuration files into a map using Java Scanner class and File class.
 I did the following:
 
-1.  I created a file reader
+1.  I created a file reader.
 
     `File environment = new File(filePath);`  
     `Scanner fileReader = new Scanner(environment);`
 
-2.  I read each line of the file
+2.  I read each line of the file.
 
     `while (fileReader.hasNextLine()) {`  
       `  String data = fileReader.nextLine();`  
       `...`  
       `}`  
       
-3.  I splitted the data read into key and value pair to be stored in a map
+3.  I splitted the data read into key and value pair to be stored in a map.
 
     `if (data.contains("=")) {`  
                     `String[] splittedData = data.split("=");`  
@@ -55,4 +55,16 @@ I did the following:
                     `String value = splittedData[1];`  
                     `}`  
                     
-4.  
+4.  I stored key and value pairs in a map i created.
+
+    `map.put(key, value);`  
+    
+5.  I closed the file.
+
+    `fileReader.close();`  
+
+6.  I handled exceptions.
+
+    `catch (FileNotFoundException e) {`  
+            `e.printStackTrace();`  
+        `}`
