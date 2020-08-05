@@ -9,12 +9,12 @@ This application takes in a command line argument. The argument can be any of th
 The application reads the configuration file corresponding to command line argument supplied when starting the application.
 ### Example
 
-`java Main.java development                // this will let the application read the development configuration file.`
+`java Main.java development                // The application will read the development configuration file.`
 
 if no command line argument is supplied when starting the application, the application will read the production configuration file.
 ### Example
 
-`java Main.java                            // this will let the application read the production configuration file.`
+`java Main.java                            // The application will read the production configuration file by default.`
 
 ## Java Files and IO
 Java Files and IO involves using *Input Streams* and *Output Streams* (IO streams) to communicate with files in java.
