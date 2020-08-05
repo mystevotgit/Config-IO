@@ -24,7 +24,7 @@ IO streams can be categorized into two groups:
 * Input stream that reads data from a source;
 * Output stream that writes data to a specified destination.
 
-There are specific IO Streams that can be used to read or write to files.
+There are specific IO Streams that can be used to read or write to files in java.
 
 A commonly used one is _**FileInputStream**_ and _**FileOutputStream**_.
 
