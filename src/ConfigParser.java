@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Scanner;
 import java.util.*;
 
@@ -12,11 +14,14 @@ public class ConfigParser {
      * @param filePath: location of a config file.
      */
 
-    public ConfigParser(String filePath) {
+    public ConfigParser(String filePath) throws IOException {
         try {
             //  Create a file reader.
             File environment = new File(filePath);
-            Scanner fileReader = new Scanner(environment);
+
+            // create an nio class object Path, to get the path to the file
+            Path path = environment.toPath();
+            Scanner fileReader = new Scanner(path);
             map = new HashMap<>();         //  Create new map
 
             String prefix = "";                             // initialize a prefix that will track application.

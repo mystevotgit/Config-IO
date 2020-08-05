@@ -1,10 +1,21 @@
+import org.junit.jupiter.api.BeforeEach;
+
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConfigParserTest {
 
-    ConfigParser config1 = new ConfigParser("src/config/config.txt");
-    ConfigParser config2 = new ConfigParser("src/config/config-staging.txt");
-    ConfigParser config3 = new ConfigParser("src/config/config-dev.txt");
+    ConfigParser config1;
+    ConfigParser config2;
+    ConfigParser config3;
+
+    @BeforeEach
+    void setUp() throws IOException {
+        config1 = new ConfigParser("src/config/config.txt");
+        config2 = new ConfigParser("src/config/config-staging.txt");
+        config3 = new ConfigParser("src/config/config-dev.txt");
+    }
 
     @org.junit.jupiter.api.Test
     void getName() {
