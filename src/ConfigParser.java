@@ -9,7 +9,7 @@ public class ConfigParser {
     /**
      * This is the ConfigParser constructor.
      * It allows the application to read the desired configuration file.
-     * @param filePath
+     * @param filePath: location of a config file.
      */
 
     public ConfigParser(String filePath) {
@@ -50,9 +50,9 @@ public class ConfigParser {
 
 
     /**
-     * This get method can be used to get any key in a config file.
-     * @param key
-     * @return: the value of the specified key will be returned.
+     * This get method can be used to get any key in the generated map.
+     * @param key: the key to search for in the map.
+     * @return the value of key in the map.
      */
     public String get(String key) {
         return map.get(key);

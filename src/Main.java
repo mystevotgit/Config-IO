@@ -1,5 +1,5 @@
 public class Main {
-    public static void main (String args[]) {
+    public static void main (String[] args) {
         //  Initialize variables.
         String fileName;
         ConfigParser config;
@@ -36,7 +36,7 @@ public class Main {
      * This method prints the values of all the keys of the specified configuration environment.
      * Different values will be printed depending on the environment specified.
      * This method can be edited to do other things.
-     * @param config
+     * @param config: the config parser to be used.
      */
     public static void getConfiguration(ConfigParser config) {
 
