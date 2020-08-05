@@ -28,7 +28,7 @@ There are specific IO Streams that can be used to read or write to files.
 
 A commonly used one is _**FileInputStream**_ and _**FileOutputStream**_.
 
-_**Java Scanner class**_ and _**File class**_ can be combined to read or write to a file too.
+Java.util _**Scanner class**_ and java.io _**File class**_ can be combined to read or write to a file too.
 
 ### Implementation
 
